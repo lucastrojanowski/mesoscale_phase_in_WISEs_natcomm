@@ -1,8 +1,14 @@
+This repository includes all of the code/figures used in our numerical simulations of phase separation via the Cahn-Hilliard equation detailed in [insert_doi_here]. Please see the publication for a full discussion of our findings associated with this repository.
+
+Notably, the contents of this repository can be run as-is to reproduce Figures 3 f,g, and h as well as Fig S22 from the associated publication. A minimal usage entails cloning the repository, creating a conda environment (details below), installing the prerequisite python packages into the environment, and simply running the respective cahn-hilliard.py scripts to generate the data for Fig 3 f, g, and h and/or Fig S22. It is not necessary to run create-ic.py to create initial conditions for the simulations since the initial conditions already exist, but for completeness one can re-generate the initial conditions used in the publication. No edits to the existing scripts are necessary. Please find a thorough discussion of the code and other contents of this repository below.
+
 ================================================================================
 Cahn-Hilliard mesoscale aggregation simulations
 ================================================================================
 
-This directory reproduces Fig. 3 and Fig. S22. Layout:
+This directory reproduces Fig. 3 f, g, and h as well as Fig. S22.
+
+Layout:
 
   initial-conditions/create-ic.py           - generates initial conditions
                                                (.npy arrays + quick-look .pdf
@@ -55,8 +61,9 @@ imageio-ffmpeg) be installed, since it is used to write the .mp4 output.
 --------------------------------------------------------------------------------
 
 create-ic.py builds 250x250 initial condition arrays for the Cahn-Hilliard
-order parameter field u (which takes asymptotic values in [-1, 1], where
--1 = pure salt, +1 = pure solvent).
+order parameter field u (which takes values in [-1, 1], where
+-1 = pure salt, +1 = pure solvent). The solvent volume fraction c (reported in the publication) is related
+to u by c = (u+1)/2, which maps [-1, 1] to [0, 1].
 
 The __main__ block sweeps a list of `order_params` (uniform mean value of
 u) and `deltas` (amplitude of uniform random noise added on top), and for
@@ -73,7 +80,7 @@ As shipped, the __main__ block regenerates exactly the two initial
 conditions actually consumed by the simulation scripts in this directory
 (order_param 0.2 for fig_3, 0.6 for fig_s22; delta 0.01 for both). Because
 the random seed is fixed, re-running it reproduces these two .npy files
-byte-for-byte.
+byte-for-byte. However, other initial conditions could easily be generated.
 
 Run it (from anywhere):
 
