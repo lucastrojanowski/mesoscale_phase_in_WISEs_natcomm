@@ -11,7 +11,6 @@ def create_heatmap(name, cmap='inferno'):
     plt.colorbar()
     plt.xlabel('x')
     plt.ylabel('y')
-    plt.title(name)
     plt.savefig(f'{name}.pdf', bbox_inches='tight')
     print(f'View new initial condition at {name}.pdf')
 
