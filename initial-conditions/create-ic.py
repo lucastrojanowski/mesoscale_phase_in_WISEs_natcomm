@@ -12,7 +12,7 @@ def create_heatmap(name, cmap='inferno'):
     plt.xlabel('x')
     plt.ylabel('y')
     plt.savefig(f'{name}.pdf', bbox_inches='tight')
-    print(f'View new initial condition at {name}.pdf')
+    print(f'Saved initial condition and created figure at {name}.pdf')
 
 def create_uniform_mix(path, order_param, delta, dim=250, seed=12041997):
     
